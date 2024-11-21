@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구글 리캡챠 클론</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="captcha-container">
+        <div class="captcha-header">
+            <div class="header-text">
+                <h2>카피바라</h2>
+                <p>카피바라가 있는 이미지를 모두 선택하세요.</p>
+            </div>
+            <div class="header-image">
+                <img src="./img/capy_1_main.jpg" alt="카피바라 이미지">
+            </div>
+        </div>
+        <div class="grid">
+            <div class="grid-item" data-id="1" style="background-image: url('./img/recapchaimg_1.png');"></div>
+            <div class="grid-item" data-id="2" style="background-image: url('./img/recapchaimg_2.png');"></div>
+            <div class="grid-item" data-id="3" style="background-image: url('./img/recapchaimg_3.png');"></div>
+            <div class="grid-item" data-id="4" style="background-image: url('./img/recapchaimg_4.png');"></div>
+            <div class="grid-item" data-id="5" style="background-image: url('./img/recapchaimg_5.png');"></div>
+            <div class="grid-item" data-id="6" style="background-image: url('./img/recapchaimg_6.png');"></div>
+            <div class="grid-item" data-id="7" style="background-image: url('./img/recapchaimg_7.png');"></div>
+            <div class="grid-item" data-id="8" style="background-image: url('./img/recapchaimg_8.png');"></div>
+            <div class="grid-item" data-id="9" style="background-image: url('./img/recapchaimg_9.png');"></div>
+        </div>
+        
+        <div class="captcha-footer">
+            <div class="left-btn">
+                <img src="./img/reset_btn.svg" alt="reset_btn" class="reset">
+                <img src="./img/music_btn.svg" alt="music_btn" class="reset">
+                <img src="./img/inform_btn.svg" alt="inform_btn" class="reset">
+            </div>
+            <button id="verify-btn">확인</button>
+        </div>
+    </div>
+    
+    <!-- result-box는 captcha-container 밖에 위치하여 독립적으로 배치 -->
+    <div id="result-box" class="result-box hidden">
+        <div class="result-icon"></div>
+        <div class="result-text">I'm not a robot</div>
+        <div class="result-logo">
+            <img src="./img/recapcha.svg" alt="리캡챠 아이콘">
+            <p>reCAPTCHA<p>
+            <p class="span">Privacy - Terms</p>
+        </div>
+    </div>
+    
+    <script src="./js/script.js"></script>
+</body>
+</html>

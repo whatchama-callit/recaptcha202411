@@ -1,0 +1,247 @@
+/* 기본 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+}
+
+.captcha-container {
+    width: 320px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform-origin: top left;
+    position: relative;
+}
+
+.captcha-header {
+    background-color: #4285f4;
+    color: white;
+    height: 110px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-text {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.header-image {
+    height: 100%;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border: 2px solid white;
+    border-radius: 4px;
+}
+
+.captcha-header h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.captcha-header p {
+    font-size: 0.8em;
+    line-height: 1.4;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background-color: #fff;
+    margin-top: 10px;
+    position: relative;
+}
+
+.grid-item {
+    width: 100%;
+    padding-top: 100%;
+    background-color: #f5f5f5;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border 0.2s ease;
+    box-sizing: border-box;
+}
+
+.grid-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 5px solid transparent;
+}
+
+.grid-item.selected::before {
+    border-color: #fff;
+}
+
+.grid-item.selected .checkmark {
+    position: absolute;
+    top: 12px;
+    left: 11px;
+    width: 20px;
+    height: 20px;
+    background-color: #4285f4;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-item.selected .checkmark::after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+}
+
+.captcha-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+#verify-btn {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 4px;
+    background-color: #4285f4;
+    color: white;
+    cursor: pointer;
+}
+
+#verify-btn:hover {
+    background-color: #357ae8;
+}
+
+/* result-box 스타일 */
+.result-box {
+    position: absolute;
+    top: 55%; /* 네 번째, 다섯 번째, 여섯 번째 grid-item 위로 위치하도록 조정 */
+    left: 60%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; /* 세로 중앙 정렬 */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    pointer-events: none; /* 이 속성으로 하위 요소 클릭이 방해되지 않도록 설정 */
+}
+
+.result-box.visible {
+    opacity: 1;
+}
+
+.result-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+}
+
+.result-icon.checkmark {
+    background-color: #34A853;
+    animation: checkmark 0.5s ease forwards;
+}
+
+.result-icon.checkmark::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    width: 4px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.result-icon.crossmark {
+    background-color: #EA4335;
+}
+
+.result-icon.crossmark::before,
+.result-icon.crossmark::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    background-color: white;
+    top: 10px;
+    left: 6px;
+}
+
+.result-icon.crossmark::before {
+    transform: rotate(45deg);
+}
+
+.result-icon.crossmark::after {
+    transform: rotate(-45deg);
+}
+
+.result-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+    color: #999;
+    text-align: center;
+}
+.result-logo img{
+    margin-bottom: 5px;
+}
+.result-logo .span{
+    font-size: 7px;
+}
+.result-text {
+    font-size: 16px;
+    font-weight: bold;
+    width: 180px;
+    padding-left: 10px;
+}
